@@ -9,10 +9,13 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const nodemailer = require("nodemailer");
 const dbConnect = require("./utls/dbConnect");
 const toolsRoutes = require("./routes/v1/tools.route");
+const { viewCounter } = require("./middleWare/middleWare");
+const { limiter } = require("./middleWare/middleWare");
 
 app.use(cors());
 app.use(express.json());
 
+// app.use(limiter)
 
 dbConnect()
 
